@@ -6,8 +6,8 @@ const Wishlist = require("./wishListModel.js");
 const sequelize = require("../config.js");
 
 // Define Relationships
-Product.belongsToMany(Category, { through: "ProductsHasCategory" });
-Category.belongsToMany(Product, { through: "ProductsHasCategory" });
+Category.hasMany(Product);
+Product.belongsTo(Category);
 
 Product.belongsToMany(User, { through: Cart });
 User.belongsToMany(Product, { through: Cart });
