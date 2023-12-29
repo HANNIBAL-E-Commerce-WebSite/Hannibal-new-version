@@ -1,9 +1,12 @@
 const express = require("express");
 const Category = require("../database/models/categoryModel.js");
+const Product = require("../database/models/productsModel.js");
 
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.findAll();
+    const categories = await Category.findAll(
+      {includes:Product}
+    );
     res.json(categories);
   } catch (error) {
     console.error(error);
