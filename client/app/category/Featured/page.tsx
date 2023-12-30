@@ -10,6 +10,7 @@ import "./FeaturedCategories.css";
 interface Category {
     id: Number;
     name: String;
+    image:string
   }
 
   const Categories: React.FC = () => {
@@ -44,8 +45,8 @@ interface Category {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            featuredCategories.map((category) => (
-              <div key={category.id} className="category__name">
+            featuredCategories.map((category,i) => (
+              <div key={i} className="category__name">
                 {/* <span>{category.name}</span> */}
                 <div className="category__card__card">
       <div className="category__image">
@@ -57,7 +58,7 @@ interface Category {
          
         </div>
         <div className="category__card__action">
-        <Link key={category.id} href={`/category/${category.name.toLowerCase()}`}>
+        <Link href={`/category/${category.name.toLowerCase()}`}>
   
          <Button
               variant="outlined"
