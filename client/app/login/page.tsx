@@ -14,15 +14,23 @@ const Login= () => {
   const[token,setToken]=useState('')
   const[logged,setLogged]=useState(false)
 
-  const login=()=>{
-    axios.post(`http://localhost:8000/auth/login`,{email:email,password:pass})
-    .then(r=>{
-      setToken(r.data.token)
-      setUserID(r.data.id)
-      router.push('/home')
-      
-    }).catch(err=>console.log(err))
+  const login = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/auth/login', {
+        email: email,
+        password: pass,
+      })
+      const { token, id } = response.data
+      setToken(token)
+      setUserID(id)
+      alert('Login successful. Welcome!')
+      router.push('/home');
+    } catch (error) {
+      console.error('Login failed:', error)
+      alert('Login failed. Please check your Password or email and try again.')
+    }
   }
+
   
   return (
     <div className='grid grid-cols-2'>

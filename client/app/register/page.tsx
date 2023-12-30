@@ -20,31 +20,32 @@ const Register = () => {
         alert('Please enter a username.');
         return;
       }
-
+  
       const userData = {
         fullName: name,
         email,
         password: pass,
         role,
       };
-
+  
       const response = await axios.post<{ success: boolean }>('http://localhost:8000/auth/register', userData);
-
+  
       console.log('User added:', response.data);
-
+  
       if (response.data.success) {
         window.alert('WELCOME TO HANNIBAL');
+        // Redirect to the login page
         router.push('/login');
       }
     } catch (error) {
       console.error('Error adding user:', error);
-
+  
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data.error || 'Registration failed. Please try again later.';
         console.error('Response data:', error.response?.data);
         console.error('Response status:', error.response?.status);
         console.error('Response headers:', error.response?.headers);
-
+  
         if (error.response?.data.details) {
           alert(`Validation failed: ${error.response.data.details.join(', ')}`);
         } else {
