@@ -5,7 +5,7 @@ const Product = require("../database/models/productsModel.js");
 const getAllCategories = async (req, res) => {
   try {
     const categories = await Category.findAll(
-      {includes:Product}
+      {include:Product}
     );
     res.json(categories);
   } catch (error) {
