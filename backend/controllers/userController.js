@@ -4,15 +4,33 @@ const bcrypt = require('bcrypt')
 
 
 const getAllUsers = async (req, res) => {
-    console.log("user");
   try {
     const users = await User.findAll();
-    console.log("users", users);
-    res.status(200).json({users});
+    res.status(200).json(users);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error' });
   }
+};
+
+const getAllClients = async (req, res) => {
+try {
+  const users = await User.findAll({where:{role:"User"}});
+  res.status(200).json(users);
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ error: 'Error' });
+}
+};
+
+const getAllSellers = async (req, res) => {
+try {
+  const users = await User.findAll({where:{role:"Seller"}});
+  res.status(200).json(users);
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ error: 'Error' });
+}
 };
 
 
@@ -111,4 +129,6 @@ module.exports = {
   createUser,
   updateUserById,
   deleteUserById,
+  getAllClients,
+  getAllSellers
 };
