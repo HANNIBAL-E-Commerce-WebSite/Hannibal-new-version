@@ -1,0 +1,8 @@
+.client-item {
+    display: flex;
+    gap: 30px;
+    width: 400px;
+    height: 80px;
+    padding: 4px;
+    margin: 8px auto;
+}
