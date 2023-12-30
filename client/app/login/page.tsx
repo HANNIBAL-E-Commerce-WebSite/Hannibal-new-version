@@ -68,13 +68,7 @@ const Login= () => {
        className='flex justify-center items-center w-[30rem] h-14 bg-blue mt-10 text-white'
        >Sign-in </button>
        <h1 className='text-blue text-center mt-10 mr-10 mb-10'>Forget Password?</h1>
-       </div>
-      </div>
-        </div>
-        <div>
-        <img className='w-[900px] h-[900px] float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
-        </div>
-        <div className='flex justify-center items-center mt-10'>
+       <div className='flex justify-center items-center mt-10'>
           <p className='text-sm text-gray-500 mt-2'>Follow us on social media:</p>
           <div className='flex gap-4 ml-4'>
             <FontAwesomeIcon icon={faFacebook} size='2x' />
@@ -82,6 +76,23 @@ const Login= () => {
             <FontAwesomeIcon icon={faInstagram} size='2x' />
           </div>
         </div>
+       </div>
+      </div>
+        </div>
+        <div>
+        
+        <img
+  className='w-[600px] h-[600px] float-left mb-4 shadow-2xl mt-24 ml-4'
+  src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg'
+  alt=""
+/>
+
+
+
+
+
+        </div>
+      
         </div>
   )
 }

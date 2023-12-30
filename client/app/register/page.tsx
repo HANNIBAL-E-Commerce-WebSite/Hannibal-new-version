@@ -132,7 +132,14 @@ const Register = () => {
         </div>
       </div>
       <div>
-      <img className='w-[900px] h-[900px] float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
+           
+      <img
+  className='w-[600px] h-[600px] float-left mb-4 shadow-2xl mt-24 ml-4'
+  src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg'
+  alt=""
+/>
+
+
       </div>
     </div>
   );
