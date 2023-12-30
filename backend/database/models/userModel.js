@@ -23,4 +23,5 @@ role: {
 
 });
 
+
 module.exports = User;

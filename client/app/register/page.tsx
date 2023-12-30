@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
@@ -10,6 +11,8 @@ const Register = () => {
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
   const [role, setRole] = useState("User");
+
+  const router = useRouter();
 
   const add = async () => {
     try {
@@ -24,9 +27,15 @@ const Register = () => {
         password: pass,
         role,
       };
-      const response = await axios.post('http://localhost:8000/auth/register', userData);
+
+      const response = await axios.post<{ success: boolean }>('http://localhost:8000/auth/register', userData);
 
       console.log('User added:', response.data);
+
+      if (response.data.success) {
+        window.alert('WELCOME TO HANNIBAL');
+        router.push('/login');
+      }
     } catch (error) {
       console.error('Error adding user:', error);
 
