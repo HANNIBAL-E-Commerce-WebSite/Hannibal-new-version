@@ -6,7 +6,9 @@ function CategoriesPage() {
    
 
     return (
-        <Categories/>
+        <div>
+            <Categories/>
+        </div>
     )
   }
   

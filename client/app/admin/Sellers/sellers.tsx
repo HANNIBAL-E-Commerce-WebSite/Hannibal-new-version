@@ -10,6 +10,8 @@ function SellersAdm() {
    
    const [sellerData,setSellerData]=useState<User[]|[]>([])
    const [refresh,setRefresh]=useState<Boolean>(false)
+   const [show,setShow]=useState<Number>(0)
+   const [showB,setShowB]=useState<Boolean>(false)
   
    const fetchData = async () => {
     try {
@@ -34,51 +36,40 @@ function SellersAdm() {
         console.error(error)
     }
    }
+
+   const handleShow=(id:Number)=>{
+    setShow(id)
+    setShowB(!showB)
+   }
   
 
     return (
-      <div>
-      <ul role="list">
-       {sellerData.map((seller:User,i)=>(
-    <li key={i} className="group/item hover:bg-slate-100 client-container">
-      <div className="client-item">
-      <img src="{person.imageUrl}" alt="no content" />
-      <div>
-        <a href="{person.url}">{seller.fullName}</a>
-        <p>{seller.email}</p>
+      <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hello there</h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            those are your Sellers
+          </p>
+        </div>
+        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          {sellerData.map((seller,i) => (
+            <li key={i}>
+              <div className="flex items-center gap-x-6">
+                <img className="h-16 w-16 rounded-full" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
+                <div>
+                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{seller.fullName}</h3>
+                  <p className="text-sm font-semibold leading-6 text-indigo-600">{seller.email}</p>
+                </div>
+                <div onClick={()=>{deleteSeller(seller.id)}}>
+                <AiOutlineUserDelete  />
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-      <a className="group/edit invisible group-hover/item:visible ..." href="tel:{person.phone}">
-        <span className=""><AiOutlineUserDelete onClick={()=>{deleteSeller(seller.id)}} /></span>
-        <svg className="group-hover/edit:translate-x-0.5 group-hover/edit:text-slate-500 ...">
-        </svg>
-      </a>
-      </div>
-      <div className="px-4 sm:px-0 info-user">
-        <h3 className="text-base font-semibold leading-7 text-gray-900">Seller Information</h3>
-      </div>
-      <div className="mt-6 border-t border-gray-100 info-user" >
-        <dl className="divide-y divide-gray-100 ">
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{seller.fullName}</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{seller.email}</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Role</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{seller.role}</dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Registered At</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{seller.createdAt.slice(0,10)}</dd>
-          </div>
-        </dl>
-      </div>
-    </li>))}
-</ul>
-      </div>
+    </div>
     )
   }
   

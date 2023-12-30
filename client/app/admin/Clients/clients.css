@@ -5,6 +5,11 @@
     gap: 86px;
 }
 
+.client-item img {
+    width:50px;
+    height: 50px;
+}
+
 .info-user {
     width:100%;
     padding: 5px 60px;

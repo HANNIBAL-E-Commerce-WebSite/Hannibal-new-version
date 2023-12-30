@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 
-const AdminNav =()=>{
+const AdminNav=()=>{
     return (
         <nav className="nav-admin">
         <Link href='/admin/Clients'>Clients</Link>

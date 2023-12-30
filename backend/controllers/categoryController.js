@@ -64,11 +64,22 @@ const updateCategory = async (req, res) => {
     res.status(500);
   }
 };
-// You can add other CRUD operations (create, update, delete) here
+
+const deleteCategory = async (req, res) => {
+
+  try {
+    const resu=await Category.destroy({where:req.params})
+    res.json(resu)
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+}
 
 module.exports = {
   getAllCategories,
   getCategoryById,
   createCategory,
   updateCategory,
+  deleteCategory,
 };

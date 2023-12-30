@@ -10,8 +10,24 @@ interface User {
 
 interface Categorie {
     id:Number;
+    name:string;
     image:string;
     createdAt:string; 
     updatedAt:string;
-    Products:any[]
+    Products:Products[]
+}
+
+interface Products {
+    id:number;
+    name:string;
+    price:number;
+    image:string;
+    description:string;
+    available:Boolean;
+    rate:number;
+    createdAt:string;
+    quantity:number;
+    sellerProduct:number;
+    updatedAt:string;
+    CategoryId:number
 }
