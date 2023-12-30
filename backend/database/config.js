@@ -6,3 +6,4 @@ const sequelize = new Sequelize("ecommercewebsite", "root", "fill_me", {
   });
   
   module.exports = sequelize;
+
