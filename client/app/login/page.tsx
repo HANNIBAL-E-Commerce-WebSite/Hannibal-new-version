@@ -33,16 +33,24 @@ const Login= () => {
               <Link href={'/home'}>Home</Link>
               <Link href={'/About'}>About</Link>
               <Link href={'/faq'}>FAQ</Link>
-              <Link href={'/login'}><h1 style={{
-    'color': 'white',
-    'width': '240%',
-    'marginTop': '-11%',
-    'height': '150%',
-    'borderRadius': '25px',
-    'display': 'flex',
-    'alignItems': 'center',
-    'justifyContent':' center',
-    'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'}}>  <Link href={'/register'}><button>Register</button></Link></h1></Link>
+              <Link href={'/register'}>
+  <h1
+    style={{
+      'color': 'white',
+      'width': '240%',
+      'marginTop': '-11%',
+      'height': '150%',
+      'borderRadius': '25px',
+      'display': 'flex',
+      'alignItems': 'center',
+      'justifyContent': 'center',
+      'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'
+    }}
+  >
+    <button>Register</button>
+  </h1>
+</Link>
+
               </div>
             </div>
             <div className='ml-40 mt-10'>

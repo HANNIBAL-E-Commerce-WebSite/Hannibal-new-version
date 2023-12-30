@@ -24,8 +24,10 @@ const Register = () => {
         password: pass,
         role,
       };
-
       const response = await axios.post('http://localhost:8000/auth/register', userData);
+
+      console.log('User added:', response.data);
+      
 
       console.log('User added:', response.data);
     } catch (error) {
