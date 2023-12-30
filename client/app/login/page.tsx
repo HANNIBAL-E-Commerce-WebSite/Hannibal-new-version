@@ -76,11 +76,10 @@ const Login= () => {
         </div>
         <div className='flex justify-center items-center mt-10'>
           <p className='text-sm text-gray-500 mt-2'>Follow us on social media:</p>
-          <div className='flex gap-2 ml-2'>
+          <div className='flex gap-4 ml-4'>
             <FontAwesomeIcon icon={faFacebook} size='2x' />
             <FontAwesomeIcon icon={faTwitter} size='2x' />
             <FontAwesomeIcon icon={faInstagram} size='2x' />
-            {/* Add more icons as needed */}
           </div>
         </div>
         </div>

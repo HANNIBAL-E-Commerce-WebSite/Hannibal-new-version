@@ -28,7 +28,6 @@ const Register = () => {
       const response = await axios.post('http://localhost:8000/auth/register', userData);
 
       console.log('User added:', response.data);
-      // Optionally, you can redirect the user to a different page after successful registration.
     } catch (error) {
       console.error('Error adding user:', error);
 
@@ -124,7 +123,6 @@ const Register = () => {
             <FontAwesomeIcon icon={faFacebook} size='2x' />
             <FontAwesomeIcon icon={faTwitter} size='2x' />
             <FontAwesomeIcon icon={faInstagram} size='2x' />
-            {/* Add more icons as needed */}
           </div>
         </div>
          

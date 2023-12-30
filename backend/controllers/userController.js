@@ -35,24 +35,24 @@ const getUserById = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-  const { fullName, email, password, role } = req.body;
-//   console.log("req",req.body);
-  
-//   console.log("user",User);
-
   try {
+    const { fullName, email, password, role } = req.body;
+
+    console.log('Received registration request:', { fullName, email, role });
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
       fullName,
       email,
       password: hashedPassword,
-      role
+      role,
     });
 
+    console.log('User created:', newUser);
     res.status(201).json(newUser);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error' });
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Error creating user' });
   }
 };
 
