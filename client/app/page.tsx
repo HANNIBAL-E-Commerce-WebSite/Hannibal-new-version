@@ -1,10 +1,16 @@
+"use client"
+import axios from 'axios'
+import Register from './register/page'
+import Login from './login/page'
+const  Home=()=> {
 
 
-export default function Home() {
-  
   return (
     <main>
-      first 
+   <Register/>
+
     </main>
+ 
   )
 }
+export default Home
