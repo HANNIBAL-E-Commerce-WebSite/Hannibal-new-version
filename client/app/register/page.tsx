@@ -1,29 +1,29 @@
- "use client"
+"use client"
 import React, { useState } from 'react';
-import axios, { AxiosError, AxiosResponse } from 'axios'
-import Link from 'next/link'
+import Link from 'next/link';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
+const Register = () => {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("seller");
 
-const Register: React.FC = () => {
-  const [email, setEmail] = useState<string>("")
-  const [pass, setPass] = useState<string>("")
-  const [FullName, setFullName] = useState<string>("")
-  const [role, setRole] = useState<string>("User")
-
-  const add = async (): Promise<void> => {
-         try {
-      if (!FullName) {
-        alert('Please enter a username.')
-        
+  const add = async () => {
+    try {
+      if (!name) {
+        alert('Please enter a username.');
+        return;
       }
-  
+
       const userData = {
-        FullName: FullName,
-        email: email,
+        fullName: name,
+        email,
         password: pass,
-        role: role
+        role,
       };
-  
 
       const response = await axios.post('http://localhost:8000/auth/register', userData);
 
@@ -33,21 +33,21 @@ const Register: React.FC = () => {
       console.error('Error adding user:', error);
 
       if (axios.isAxiosError(error)) {
-        const errorMessage = error.response?.data.error || 'Registration failed. Please try again later.'
-        console.error('Response data:', error.response?.data)
-        console.error('Response status:', error.response?.status)
-        console.error('Response headers:', error.response?.headers)
+        const errorMessage = error.response?.data.error || 'Registration failed. Please try again later.';
+        console.error('Response data:', error.response?.data);
+        console.error('Response status:', error.response?.status);
+        console.error('Response headers:', error.response?.headers);
 
         if (error.response?.data.details) {
-          alert(`Validation failed: ${error.response.data.details.join(', ')}`)
+          alert(`Validation failed: ${error.response.data.details.join(', ')}`);
         } else {
           alert(errorMessage);
         }
       } else {
-        console.error('Error setting up the request:', error.message)
+        console.error('Error setting up the request:', error.message);
       }
     }
-  }
+  };
 
   return (
     <div className='grid grid-cols-2'>
@@ -78,21 +78,14 @@ const Register: React.FC = () => {
         </div>
         <div className='ml-40 mt-10'>
           <h1 className='text-center mb-5 font-extrabold text-xl'>Welcome To Hannibal</h1>
-          <h1 className='mb-5'>Register to continue </h1>
+          <h1 className='mb-5'>Register Now </h1>
           <div>
-            <Link href={'/login'}>
-              <button
-                style={{ 'position': 'absolute', 'top': '31%', 'left': '43%' }}
-                className=' text-blue float-right font-bold mr-10'
-              >
-                Log-in
-              </button>
-            </Link>
+           
             <input
               placeholder='Username'
               required
               type="text"
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               className='w-[30rem] h-14 border border-gray-400 p-4 text-sm mb-10'
             />
             <input
@@ -115,26 +108,33 @@ const Register: React.FC = () => {
               onChange={(e) => setRole(e.target.value)}
               className='w-[10rem] h-7 cursor-pointer rounded-sm'
             >
-              <option>seller</option>
-              <option>User</option>
+              <option >seller</option>
+              <option>client</option>
             </select>
             <button
-        onClick={() => add()}
-        style={{ 'backgroundImage': 'linear-gradient(90deg,#4681b9,#2c578c)' }}
-        className='flex justify-center items-center w-[30rem] h-14 bg-blue mt-10 text-white'
-      >
-        Register
-      </button>
-            <br />
+              onClick={() => add()}
+              style={{ 'backgroundImage': 'linear-gradient(90deg,#4681b9,#2c578c)' }}
+              className='flex justify-center items-center w-[30rem] h-14 bg-blue mt-10 text-white'
+            >
+              Register
+            </button>
+            <div className='flex justify-center items-center mt-10'>
+          <p className='text-sm text-gray-500 mt-2'>Follow us on social media:</p>
+          <div className='flex gap-2 ml-2'>
+            <FontAwesomeIcon icon={faFacebook} size='2x' />
+            <FontAwesomeIcon icon={faTwitter} size='2x' />
+            <FontAwesomeIcon icon={faInstagram} size='2x' />
+            {/* Add more icons as needed */}
           </div>
         </div>
-        <div className="flex flex-col items-center mt-10">
-        
-          <p className="text-sm text-gray-500 mt-2">Follow us on social media</p>
+         
+            <br />
+
+          </div>
         </div>
       </div>
       <div>
-        <img className='w-full h-full float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
+      <img className='w-[900px] h-[900px] float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
       </div>
     </div>
   );

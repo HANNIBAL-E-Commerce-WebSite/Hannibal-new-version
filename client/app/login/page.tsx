@@ -3,6 +3,8 @@ import React,{useState,createContext} from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 const Login= () => {
   const[con,setCon]=useState("")
   const router=useRouter()
@@ -40,7 +42,7 @@ const Login= () => {
     'display': 'flex',
     'alignItems': 'center',
     'justifyContent':' center',
-    'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'}}>Login</h1></Link>
+    'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'}}>  <Link href={'/register'}><button>Register</button></Link></h1></Link>
               </div>
             </div>
             <div className='ml-40 mt-10'>
@@ -48,8 +50,7 @@ const Login= () => {
               <h1>Sign-Up For Free </h1>
 
               <div>
-              <Link href={'/register'}><button className=' text-blue float-right font-bold mr-10 mb-5'>Register</button></Link>
-                  <br />
+                
           <input type="email"
           placeholder='Email Adress or Username'
           onChange={(e)=>setEmail(e.target.value)}
@@ -71,7 +72,16 @@ const Login= () => {
       </div>
         </div>
         <div>
-        <img className='w-full h-full float-right' src="https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg" alt="" />
+        <img className='w-[900px] h-[900px] float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
+        </div>
+        <div className='flex justify-center items-center mt-10'>
+          <p className='text-sm text-gray-500 mt-2'>Follow us on social media:</p>
+          <div className='flex gap-2 ml-2'>
+            <FontAwesomeIcon icon={faFacebook} size='2x' />
+            <FontAwesomeIcon icon={faTwitter} size='2x' />
+            <FontAwesomeIcon icon={faInstagram} size='2x' />
+            {/* Add more icons as needed */}
+          </div>
         </div>
         </div>
   )
