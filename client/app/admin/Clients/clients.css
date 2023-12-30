@@ -1,0 +1,26 @@
+.client-item {
+    display: flex;
+    height: 80px;
+    width: 82%;
+    gap: 86px;
+}
+
+.client-item img {
+    width:50px;
+    height: 50px;
+}
+
+.info-user {
+    width:100%;
+    padding: 5px 60px;
+    margin: 0 auto;
+}
+
+.client-container{
+    width: 60%;
+    margin: 8px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
