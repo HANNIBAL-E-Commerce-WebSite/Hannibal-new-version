@@ -9,7 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState("seller");
+  const [role, setRole] = useState("User");
 
   const add = async () => {
     try {
@@ -103,12 +103,12 @@ const Register = () => {
             <br />
             <h1>Role:</h1><br />
             <select
-              onChange={(e) => setRole(e.target.value)}
-              className='w-[10rem] h-7 cursor-pointer rounded-sm'
-            >
-              <option >seller</option>
-              <option>client</option>
-            </select>
+  onChange={(e) => setRole(e.target.value)}
+  className='w-[10rem] h-7 cursor-pointer rounded-sm'
+>
+  <option value="Seller">Seller</option>
+  <option value="User">Client</option>
+</select>
             <button
               onClick={() => add()}
               style={{ 'backgroundImage': 'linear-gradient(90deg,#4681b9,#2c578c)' }}
