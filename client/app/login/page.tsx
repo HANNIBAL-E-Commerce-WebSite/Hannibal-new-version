@@ -13,21 +13,39 @@ const Login= () => {
   const[userID,setUserID]=useState(0)
   const[token,setToken]=useState('')
   const[logged,setLogged]=useState(false)
-
+  const [role,setRole]=useState("")
   const login = async () => {
     try {
       const response = await axios.post('http://localhost:8000/auth/login', {
         email: email,
         password: pass,
       })
-      const { token, id } = response.data
+      const { token, id ,role} = response.data
       setToken(token)
       setUserID(id)
+      setRole(role)
       alert('Login successful. Welcome!')
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error)
       alert('Login failed. Please check your Password or email and try again.')
+    }
+  }
+
+  
+  const handleRedirect = () => {
+    switch (role) {
+      case 'admin':
+        router.push('/admin-dashboard')
+        break
+      case 'seller':
+        router.push('/seller-dashboard')
+        break
+      case 'client':
+        router.push('/client-dashboard')
+        break
+      default:
+        router.push('/home')
     }
   }
 

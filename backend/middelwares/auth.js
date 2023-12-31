@@ -18,7 +18,27 @@ const authenticateUser = (req, res, next) => {
     next();
   });  
 };
+const authenticateAdmin = (req, res, next) => {
+  if (req.params.role !== 'admin') {
+     return res.status(403).json({ message: 'Admin role required' });
+  }
+  next()
+ }
+ 
+ const authenticateSeller = (req, res, next) => {
+  if (req.params.role !== 'seller') {
+     return res.status(403).json({ message: 'Seller role required' })
+  }
+  next()
+ }
+ 
+ const authenticateClient = (req, res, next) => {
+  if (req.params.role !== 'client') {
+     return res.status(403).json({ message: 'Client role required' })
+  }
+  next()
+ }
 
 module.exports = {
-  authenticateUser
+  authenticateUser, authenticateAdmin,authenticateSeller, authenticateClient
 };

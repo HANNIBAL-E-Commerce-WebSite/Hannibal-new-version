@@ -28,15 +28,13 @@ const Register = () => {
         password: pass,
         role,
       };
-  
-
-      const response = await axios.post<{ success: boolean }>('http://localhost:8000/auth/register', userData);
+        const response = await axios.post<{ success: boolean }>('http://localhost:8000/auth/register', userData);
 
       console.log('User added:', response.data);
   
       if (response.data.success) {
         alert('WELCOME TO HANNIBAL');
-        router.push('/login', undefined, { shallow: true });
+        router.push('/login');
       }
     } catch (error) {
       console.error('Error adding user:', error);
