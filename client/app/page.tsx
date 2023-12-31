@@ -7,8 +7,7 @@ const  Home=()=> {
 
   return (
     <main>
-   <Register/>
-
+   hello 
     </main>
  
   )

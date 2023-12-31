@@ -26,8 +26,7 @@ const Register = () => {
       };
 
       const response = await axios.post('http://localhost:8000/auth/register', userData);
-
-      console.log('User added:', response.data);
+      
     } catch (error) {
       console.error('Error adding user:', error);
 
@@ -43,7 +42,7 @@ const Register = () => {
           alert(errorMessage);
         }
       } else {
-        console.error('Error setting up the request:', error.message);
+        console.error('Error setting up the request:', error);
       }
     }
   };
