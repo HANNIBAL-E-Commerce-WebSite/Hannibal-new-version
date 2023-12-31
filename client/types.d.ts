@@ -40,6 +40,10 @@ interface Product {
     price: number;
     image: string;
     description: string;
+    image: string;
+    img2: string;
+    img3: string;
+    img4: string;
   }
   
   interface CategoryProps {
