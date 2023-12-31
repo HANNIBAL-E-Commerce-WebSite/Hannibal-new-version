@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import "../Clients/clients.css"
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { PaperClipIcon } from '@heroicons/react/20/solid'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -28,13 +32,34 @@ function SellersAdm() {
    },[refresh])
 
    const deleteSeller=async(ids:Number)=>{
-    try {
-        const response=await fetch(`http://localhost:8000/users/${ids}`, {method: 'DELETE'})
-        console.log("deleted");
-        setRefresh(!refresh)
-    } catch (error) {
-        console.error(error)
-    }
+    confirmAlert({
+      title: 'Confirm Deletion',
+      message: 'Are you sure you want to delete this seller?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: async() => {
+
+            try {
+                const response=await fetch(`http://localhost:8000/users/${ids}`, {method: 'DELETE'})
+                setRefresh(!refresh)
+                toast.error("Seller deleted !", {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+            } catch (error) {
+                console.error(error)
+            }
+            console.log('Item deleted!');
+          },
+        },
+        {
+          label: 'No',
+          onClick: () => {
+            console.log('Deletion canceled.');
+          },
+        },
+      ],
+    });
    }
 
    const handleShow=(id:Number)=>{
@@ -45,6 +70,7 @@ function SellersAdm() {
 
     return (
       <div className="bg-white py-24 sm:py-32">
+        <ToastContainer />
       <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hello there</h2>
