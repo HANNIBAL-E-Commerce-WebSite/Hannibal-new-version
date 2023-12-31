@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
+
 const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -28,14 +29,14 @@ const Register = () => {
         role,
       };
   
+
       const response = await axios.post<{ success: boolean }>('http://localhost:8000/auth/register', userData);
-  
+
       console.log('User added:', response.data);
   
       if (response.data.success) {
-        window.alert('WELCOME TO HANNIBAL');
-        // Redirect to the login page
-        router.push('/login');
+        alert('WELCOME TO HANNIBAL');
+        router.push('/login', undefined, { shallow: true });
       }
     } catch (error) {
       console.error('Error adding user:', error);
