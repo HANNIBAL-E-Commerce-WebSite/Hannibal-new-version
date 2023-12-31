@@ -4,9 +4,7 @@ const Product = require("../database/models/productsModel.js");
 
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.findAll(
-      {include:Product}
-    );
+    const categories = await Category.findAll({ include: Product });
     res.json(categories);
   } catch (error) {
     console.error(error);
@@ -18,7 +16,7 @@ const getCategoryById = async (req, res) => {
   const categoryId = req.params.id;
 
   try {
-    const category = await Category.findByPk(categoryId);
+    const category = await Category.findByPk(categoryId, { include: Product });
 
     if (!category) {
       return res.status(404).json({ message: "Category not found" });
@@ -31,7 +29,6 @@ const getCategoryById = async (req, res) => {
   }
 };
 const createCategory = async (req, res) => {
-
   try {
     const category = await Category.create(req.body);
 
@@ -66,15 +63,14 @@ const updateCategory = async (req, res) => {
 };
 
 const deleteCategory = async (req, res) => {
-
   try {
-    const resu=await Category.destroy({where:req.params})
-    res.json(resu)
+    const resu = await Category.destroy({ where: req.params });
+    res.json(resu);
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
   }
-}
+};
 
 module.exports = {
   getAllCategories,
