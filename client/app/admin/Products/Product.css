@@ -1,0 +1,10 @@
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.button-add {
+    margin: auto;
+}
