@@ -32,7 +32,22 @@ const ShopCategory = () => {
 
     fetchCategories();
   }, []);
-
+  const handelAddToCart = (obj:any) => {
+    console.log(obj);
+    
+      let storage:Products[]=JSON.parse(localStorage.getItem("basket") as string)|| null
+      let arrBasket=[]
+      if(storage!==null){
+          arrBasket=[...storage,obj]
+        }
+      else{
+        arrBasket=[obj]
+      }
+          localStorage.clear()
+          localStorage.setItem("basket",JSON.stringify(arrBasket))
+    
+  };
+   
   const handleAddToWishList=async(ids:Number)=>{
     const ress=axios.post('http://localhost:8000/wishlist',{
       prodId:ids,
@@ -105,7 +120,7 @@ const ShopCategory = () => {
                               />
                             </IconButton>
                             <IconButton
-                              // onClick={handleAddToCart}
+                              onClick={()=>{handelAddToCart(product)}}
                               sx={{
                                 borderRadius: "20px",
                                 width: "40px",

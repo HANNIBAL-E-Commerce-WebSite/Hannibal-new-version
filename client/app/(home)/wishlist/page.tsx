@@ -20,37 +20,28 @@ const Wishlist: React.FC = () => {
   useEffect(()=>{
     fetchData()
   },[refresh])
-  const handleRemoveItem = async (prod:Number) => {
-    try {
-      const resss = await fetch('http://localhost:8000/wishlist', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          // Add any other headers if needed
-        },
-        body: JSON.stringify({
-          ProductId: prod,
-          UserId: 4,
-        }),
-      });
-  
-      if (!resss.ok) {
-        // Handle non-successful response (e.g., show an error message)
-        console.error('Failed to remove item. Server returned:', resss.status, resss.statusText);
-        return;
-      }
-  
-      const results = await resss.json();
-      console.log(results);
-  
-      // Assuming setRefresh is a state update function
-      setRefresh(!refresh);
-    } catch (error) {
-      // Handle network or other errors
-      console.error('Error while removing item:',error);
-    }
+  const handelRemoveItem = async(prod:Number) => {
+    const resss=await axios.put('http://localhost:8000/wishlist',{
+      ProductId:prod,
+      UserId:4
+  })
+    setRefresh(!refresh)
   };
-  
+  const handelAddToCart = (obj:any) => {
+    console.log(obj);
+    
+      let storage:Products[]=JSON.parse(localStorage.getItem("basket") as string)|| null
+      let arrBasket=[]
+      if(storage!==null){
+          arrBasket=[...storage,obj]
+        }
+      else{
+        arrBasket=[obj]
+      }
+          localStorage.clear()
+          localStorage.setItem("basket",JSON.stringify(arrBasket))
+    
+  };
 
   return (
     <div className="wishlist">
@@ -63,7 +54,7 @@ const Wishlist: React.FC = () => {
           <div key={j} className="wishlist__items">
             <div className="wishcard">
               <div className="wish__remove__item__icon">
-                <IconButton onClick={()=>{handleRemoveItem(el.Product.id)}}>
+                <IconButton onClick={()=>{handelRemoveItem(el.Product.id)}}>
                   <HighlightOffIcon />
                 </IconButton>
               </div>
@@ -79,7 +70,10 @@ const Wishlist: React.FC = () => {
               <div className="add__to__cart">
                 <Button
                   variant="outlined"
-                  // onClick={()=>{()=>{handelAddToCart()}}}
+                  onClick={()=>{
+                    console.log("hello");
+                    
+                    handelAddToCart(el.Product)}}
                   sx={[
                     {
                       "&:hover": {
