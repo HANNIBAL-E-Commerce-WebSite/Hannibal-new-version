@@ -4,7 +4,7 @@ import "./wishlist.css";
 import { Button, IconButton } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const Wishlist: React.FC = () => {
+const Wishlist: React.FC = ({ params }) => {
   const handelRemoveItem = () => {
     console.log("Item removed");
   };
@@ -21,7 +21,6 @@ const Wishlist: React.FC = () => {
         </div>
         <div className="wishlist__items__container">
           <div className="wishlist__items">
-            {/* Example wishlist item */}
             <div className="wishcard">
               <div className="wish__remove__item__icon">
                 <IconButton onClick={handelRemoveItem}>
@@ -29,9 +28,13 @@ const Wishlist: React.FC = () => {
                 </IconButton>
               </div>
               <div className="wish__item__image">
-                <img src="https://res.cloudinary.com/dubduh12x/image/upload/v1704060943/5c4af3f6449bef4207c9daff8e194b23-removebg_h6be3b.png" alt="item" className="wish__image" />
+                <img
+                  src="https://res.cloudinary.com/dubduh12x/image/upload/v1704060943/5c4af3f6449bef4207c9daff8e194b23-removebg_h6be3b.png"
+                  alt="item"
+                  className="wish__image"
+                />
               </div>
-              <div className="wish__item__name">Item Name</div>
+              <div className="wish__item__name">{params.name}</div>
               <div className="wish__item__price">$99.99</div>
               <div className="add__to__cart">
                 <Button
@@ -55,9 +58,7 @@ const Wishlist: React.FC = () => {
               </div>
             </div>
 
-            
-              {/* <div>No items</div> */}
-           
+            {/* <div>No items</div> */}
           </div>
         </div>
       </div>

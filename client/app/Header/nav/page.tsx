@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import "./nav.css";
 import "./form.css";
 import DrawerNav from "./drawerNav/page";
+import SearchResults from "./searchResults/page";
 
 interface Product {
   name: string;
@@ -71,7 +72,7 @@ const Nov: React.FC = () => {
               <SearchIcon fontSize="medium" />
             </button>
           </form>
-          {/* <SearchResults results={results} /> */}
+          <SearchResults results={results} />
         </div>
         <div className="control__bar">
           <div className="control__bar__container">
