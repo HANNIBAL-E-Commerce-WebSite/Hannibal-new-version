@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Fragment, useState } from "react";
@@ -12,7 +13,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import "./Cart.css"
-// Import CartCard and any other components or contexts you might be using
 
 const style = {
   position: "absolute",
@@ -34,9 +34,9 @@ const Cart = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [openCheckoutModal, setOpenCheckoutModal] = useState(false);
-  const handleCheckoutOpen = () => setOpenCheckoutModal(true);
-  const handleCheckoutClose = () => setOpenCheckoutModal(false);
+  // const [openCheckoutModal, setOpenCheckoutModal] = useState(false);
+  // const handleCheckoutOpen = () => setOpenCheckoutModal(true);
+  // const handleCheckoutClose = () => setOpenCheckoutModal(false);
   const handelQuantityIncrement = (event) => {
     cartItems.quantity(props.item.id, "INC");
   };
@@ -142,13 +142,13 @@ const Cart = () => {
           </div>
         </Box>
       </Modal>
-      <Modal open={openCheckoutModal} onClose={handleCheckoutClose}>
+      {/* <Modal open={openCheckoutModal} onClose={handleCheckoutClose}>
         <Box sx={style}>
           <div className="d-flex w-100 h-100 justify-content-center align-items-center">
             <h2>Your checkout was successful</h2>
           </div>
         </Box>
-      </Modal>
+      </Modal> */}
     </Fragment>
   );}
 
