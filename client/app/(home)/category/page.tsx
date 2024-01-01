@@ -32,6 +32,14 @@ const ShopCategory = () => {
 
     fetchCategories();
   }, []);
+
+  const handleAddToWishList=async(ids:Number)=>{
+    const ress=axios.post('http://localhost:8000/wishlist',{
+      prodId:ids,
+      id:4
+  })
+  }
+
   return (
     <div className="shop__contianer">
       {categories ? (
@@ -85,7 +93,7 @@ const ShopCategory = () => {
                           </div>
                           <div className="product__card__action">
                             <IconButton
-                              // onClick={handleAddToWishList}
+                              onClick={()=>{handleAddToWishList(product.id)}}
                               sx={{
                                 borderRadius: "20px",
                                 width: "40px",
