@@ -19,7 +19,7 @@ const SingleProduct: React.FC = () => {
   useEffect(() => {
     const fetchProductDetails = async (productId: number) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/products/${productId}`);
+        const response = await fetch(`http://localhost:8000/products/1`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
