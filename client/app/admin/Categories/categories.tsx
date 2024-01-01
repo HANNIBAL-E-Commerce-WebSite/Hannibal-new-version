@@ -1,8 +1,8 @@
 "use client"
 
 import React,{useState,useEffect} from "react"
-import "../../Featured/FeaturedCategories.css"
-import "../../Featured/CategoryCard.css"
+import "../../(home)/Featured/FeaturedCategories.css"
+import "../../(home)/Featured/CategoryCard.css"
 import { MdDelete } from "react-icons/md";
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { confirmAlert } from 'react-confirm-alert';
