@@ -25,7 +25,7 @@ const Category: React.FC<CategoryProps> = ({params}) => {
   const [items, setItems] = useState<Product[]>([]);
   const [allItems, setAllItems] = useState<Product[]>([]);
 
-  
+  // const router=useRouter()
   
 
   useEffect(() => {
@@ -117,7 +117,8 @@ const Category: React.FC<CategoryProps> = ({params}) => {
             {items.map((product: Product, j: number) => (
                     <div key={j} className="product__card__card">
                       <div className="product__card">
-                        <div className="product__image">
+                      {/* onClick={()=>{router.push(`/Product/${product.id}`)}} */}
+                        <div className="product__image" >
                           {product.image && product.image.length > 0 && (
                             <img
                               src={product.image}
