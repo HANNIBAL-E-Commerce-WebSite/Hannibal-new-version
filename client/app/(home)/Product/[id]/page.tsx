@@ -169,7 +169,7 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
                   setAddToWishList(params.id);
                 }}
               >
-                <FavoriteBorderIcon color="black" sx={{ width: "25px" }} />
+                <FavoriteBorderIcon sx={{ width: "25px" }} />
                 add to wshlist
               </button>
             </div>

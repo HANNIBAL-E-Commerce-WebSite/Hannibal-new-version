@@ -52,9 +52,6 @@ const Register = () => {
       <div id='div-az' className='bg-gray w-full h-full'>
         <div className='flex m-20 ml-40 '>
           <div className='flex gap-20'>
-            <Link href={'/home'}>Home</Link>
-            <Link href={'/About'}>About</Link>
-            <Link href={'/faq'}>FAQ</Link>
             <Link href={'/login'}>
               <h1
                 style={{

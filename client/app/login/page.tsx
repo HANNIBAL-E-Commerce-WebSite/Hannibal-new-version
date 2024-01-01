@@ -6,8 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { ReactNode } from 'react';
-import Profile from '../profile/page.tsx';
-import Edit from '../profile/edit/page.tsx';
+
 
 const Login= () => {
   const[con,setCon]=useState("")
@@ -36,18 +35,9 @@ const Login= () => {
  
   return (
     <div className='grid grid-cols-2'>
-      {show && (
-        <div>
-          <Profile userID={userID || 0} />
-          <Edit userID={userID || 0} />
-        </div>
-      )}
           <div id='div-az' className='bg-gray w-full h-full' >
             <div className='flex m-20 ml-40 '>
               <div className='flex gap-20'>
-              <Link href={'/home'}>Home</Link>
-              <Link href={'/About'}>About</Link>
-              <Link href={'/faq'}>FAQ</Link>
               <Link href={'/login'}><h1 style={{
     'color': 'white',
     'width': '240%',
