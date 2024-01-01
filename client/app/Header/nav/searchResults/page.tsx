@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import "./popup.css";
 import { useRef } from "react";
 
-
 const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
+  console.log(results, "results");
+
   const popupRef = useRef<HTMLDivElement>(null);
 
   if (!results || results.length === 0) {
@@ -10,10 +12,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
   }
 
   return (
-    <div className={styles.popup} ref={popupRef}>
-      <div className={styles["popup-content"]}>
+    <div className="popup" ref={popupRef}>
+      <div className="popup-content">
         {results.map((result, i) => (
-          <div key={i} className={styles["result-item"]}>
+          <div key={i} className="result-item">
             <p>
               <img
                 src={result.image.slice(1, result.image.length - 1)}
