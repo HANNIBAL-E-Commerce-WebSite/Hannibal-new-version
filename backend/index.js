@@ -9,6 +9,8 @@ const { authenticateUser } = require("./middelwares/auth.js");
 const authRoute = require("./routes/authRoute.js");
 const categoryRoutes = require("./routes/categoryRoute.js");
 const paymentRoute = require("./routes/payment.js");
+const wishlistRoute=require("./routes/wishListRoute.js")
+const ordersRoute=require("./routes/cartRoute.js")
 
 app.use(express.json());
 
@@ -25,6 +27,8 @@ app.use("/categories", categoryRoutes);
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);
 app.use("/payment", paymentRoute);
+app.use("/wishlist",wishlistRoute)
+app.use("/orders",ordersRoute)
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);

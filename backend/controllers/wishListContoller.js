@@ -1,31 +1,33 @@
-const { User, WishList } = require("../database/models/wishListModel.js");
+const Product = require("../database/models/productsModel.js");
+const User = require("../database/models/userModel.js");
+const WishList= require("../database/models/wishListModel.js");
 
-const addToWishList = async (req, res) => {
-  const { id } = req.user;
-  const { prodId } = req.body;
+const getAllWishlistProducts = async (req,res) => {
   try {
-    const user = await User.findByPk(id);
-
-    const alreadyAdded = await WishList.findOne({
-      where: {
-        UserId: id,
-      },
+    const wishlistProducts = await WishList.findAll({
+      include: [{
+        model: User,
+        where: { id: req.params.id }
+      }, {
+        model: Product,
+      }],
     });
 
-    if (alreadyAdded) {
-      res.status(400).json({ message: "Product already in wishlist" });
-    } else {
-      await WishList.create({
+    res.send(wishlistProducts)
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+const addToWishList = async (req, res) => {
+  const { id } = req.body;
+  const { prodId } = req.body;
+  try {
+     const result= await WishList.create({
         UserId: id,
         ProductId: prodId,
       });
 
-      const updatedUser = await User.findByPk(id, {
-        include: [WishList],
-      });
-
-      res.json(updatedUser);
-    }
+      res.json(result);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal server error" });
@@ -34,4 +36,5 @@ const addToWishList = async (req, res) => {
 
 module.exports = {
   addToWishList,
+  getAllWishlistProducts
 };
