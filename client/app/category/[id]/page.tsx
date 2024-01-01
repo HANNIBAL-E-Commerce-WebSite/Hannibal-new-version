@@ -13,14 +13,15 @@ import ReactLoading from "react-loading";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
-import "../shop//ShopCategory.css"
+import "../ShopCategory.css"
 import { useRouter } from 'next/router'
 
 
 const Category: React.FC<CategoryProps> = ({params}) => {
+  
  
   const [loading, setLoading] = useState(true);
-  const [categories, setCategories] = useState<Categorie[]|[]>([]);
+  const [categories, setCategories] = useState<Categorie>({});
   const [items, setItems] = useState<Product[]>([]);
   const [allItems, setAllItems] = useState<Product[]>([]);
 
@@ -30,14 +31,14 @@ const Category: React.FC<CategoryProps> = ({params}) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`http://192.168.1.150:8000/categories/${params.id}}`);
+        const response = await fetch(`http://localhost:8000/categories/${params.id}}`);
         const ress=await response.json()
         setCategories(ress);
-        const sortedProducts = ress.Products.sort((a, b) => b.rate - a.rate);
+        const sortedProducts = ress.Products.sort((a:{rate:any}, b:{rate:any}) => b.rate - a.rate);
 
         const topFourProducts = sortedProducts.slice(0, 4);
         setItems(topFourProducts);
-        setAllItems(sortedProducts); // Set all products in a separate state
+        setAllItems(sortedProducts);
 
         console.log(ress, "products");
       } catch (error) {

@@ -13,7 +13,7 @@ interface Category {
     image:string
   }
 
-  const Categories: React.FC = () => {
+  const Featured: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [featuredCategories, setFeaturedCategories] = useState<Category[]>([]);
   
@@ -58,7 +58,7 @@ interface Category {
          
         </div>
         <div className="category__card__action">
-        <Link href={`/category/${category.name.toLowerCase()}`}>
+        <Link href={`/category/${category.id}`}>
   
          <Button
               variant="outlined"
@@ -92,4 +92,4 @@ interface Category {
   );
 };
 
-export default Categories;
+export default Featured;
