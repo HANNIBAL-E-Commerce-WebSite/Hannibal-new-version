@@ -3,12 +3,13 @@ import Link from "next/link";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Badge from "@mui/material/Badge";
-import Cart from "../../cart/page";
+import Cart from "../../(home)/cart/page";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect } from "react";
 import "./nav.css";
 import "./form.css";
 import DrawerNav from "./drawerNav/page";
+import SearchResults from "./searchResults/page";
 
 interface Product {
   name: string;
@@ -77,10 +78,10 @@ const Nov: React.FC = () => {
           <div className="control__bar__container">
             <div className="controls__container">
               <div className="control">
-                <Link href={userId ? "/account/me" : "/account/login"}>
+                {/* <Link href={userId ? "/profile" : "/account/login"}> */}
+                <Link href="/profile">
                   <PersonOutlineIcon
-                    color="black"
-                    size="large"
+
                     sx={{ width: "35px" }}
                   />
                 </Link>
@@ -88,7 +89,7 @@ const Nov: React.FC = () => {
               <div className="control">
                 <Link href="/wishlist">
                   <Badge badgeContent={5} color="error">
-                    <FavoriteBorderIcon color="black" sx={{ width: "35px" }} />
+                    <FavoriteBorderIcon sx={{ width: "35px" }} />
                   </Badge>
                 </Link>
               </div>

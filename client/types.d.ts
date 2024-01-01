@@ -57,3 +57,13 @@ interface Product {
 interface Context {
 
 }
+
+interface SearchResult {
+    image: string;
+    name: string;
+    price: number;
+  }
+  
+  interface SearchResultsProps {
+    results: SearchResult[];
+  }

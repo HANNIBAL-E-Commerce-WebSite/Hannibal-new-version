@@ -12,7 +12,7 @@ const Landing: React.FC = () => {
           <h1 className="landing__header__main">
             Checkout The Best Fashion Style
           </h1>
-          <Link href="/shop">
+          <Link href="/category">
             
               <Button
                 variant="outlined"

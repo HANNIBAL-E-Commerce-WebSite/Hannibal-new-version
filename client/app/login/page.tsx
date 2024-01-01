@@ -5,6 +5,9 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { ReactNode } from 'react';
+
+
 const Login= () => {
   const[con,setCon]=useState("")
   const router=useRouter()
@@ -13,26 +16,28 @@ const Login= () => {
   const[userID,setUserID]=useState(0)
   const[token,setToken]=useState('')
   const[logged,setLogged]=useState(false)
-
+  const [show, setShow] = useState(false)
+ 
+  interface id{ 
+    userID:number;}
+  
   const login=()=>{
     axios.post(`http://localhost:8000/auth/login`,{email:email,password:pass})
     .then(r=>{
+      console.log(r);
       setToken(r.data.token)
-      setUserID(r.data.id)
+      setUserID(r.data.userId)
       router.push('/home')
       
     }).catch(err=>console.log(err))
   }
-  
+ console.log(userID);
+ 
   return (
     <div className='grid grid-cols-2'>
-     
           <div id='div-az' className='bg-gray w-full h-full' >
             <div className='flex m-20 ml-40 '>
               <div className='flex gap-20'>
-              <Link href={'/home'}>Home</Link>
-              <Link href={'/About'}>About</Link>
-              <Link href={'/faq'}>FAQ</Link>
               <Link href={'/login'}><h1 style={{
     'color': 'white',
     'width': '240%',

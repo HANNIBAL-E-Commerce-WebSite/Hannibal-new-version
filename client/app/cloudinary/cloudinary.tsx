@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -10,13 +10,12 @@ const ImageUploader: React.FC = () => {
 
     if (file) {
       try {
-
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "jk9qvkg1");
+        formData.append("upload_preset", "qncgi1tt");
 
         const response = await axios.post(
-          `https://api.cloudinary.com/v1_1/dfnpattdz/image/upload`,
+          `https://api.cloudinary.com/v1_1/dubduh12x/image/upload`,
           formData
         );
         setImage(response.data.secure_url);
