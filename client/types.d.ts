@@ -3,18 +3,19 @@ interface User {
     fullName:string;
     email:string; 
     password:string;
-    role:string; 
+    role:string;
+    token:string 
     createdAt:string; 
     updatedAt:string
 }
 
 interface Categorie {
-    id:Number;
-    name:string;
-    image:string;
-    createdAt:string; 
-    updatedAt:string;
-    Products:Products[]
+    id?:Number;
+    name?:string;
+    image?:string;
+    createdAt?:string; 
+    updatedAt?:string;
+    Products?:Products[]
 }
 
 interface Products {
@@ -47,6 +48,12 @@ interface Product {
   }
   
   interface CategoryProps {
+    params:{
+        id:any
+    };
     products: Product[];
   }
 
+interface Context {
+
+}
