@@ -60,15 +60,15 @@ const DrawerNav: FC = () => {
       );
   return (
     <Fragment>
-      {["left"].map((anchor) => (
-        <Fragment>
+      {["left"].map((anchor,i) => (
+        <Fragment key={i}>
           {state.left ? (
             <MenuOpenIcon fontSize="large" />
           ) : (
             <MenuIcon fontSize="large" onClick={toggleDrawer(anchor, true)} />
           )}
           <Drawer
-            anchor={anchor}
+            
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >

@@ -10,19 +10,19 @@ const NavLinks = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="nav-link">
-            <Link href="/shop">Shop</Link>{" "}
+            <Link href="/category">Shop</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/men">Men</Link>
+            <Link href="/category/1">Men</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/women">Women</Link>
+            <Link href="/category/2">Women</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/kids">Kids</Link>
+            <Link href="/category/3">Kids</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/babies">Babies</Link>
+            <Link href="/category/4">Babies</Link>
           </li>
           <li className="nav-link">
             <Link href="/about">About</Link> 
