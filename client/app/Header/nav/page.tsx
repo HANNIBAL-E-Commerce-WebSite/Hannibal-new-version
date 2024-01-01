@@ -77,7 +77,8 @@ const Nov: React.FC = () => {
           <div className="control__bar__container">
             <div className="controls__container">
               <div className="control">
-                <Link href={userId ? "/account/me" : "/account/login"}>
+                {/* <Link href={userId ? "/profile" : "/account/login"}> */}
+                <Link href="/profile">
                   <PersonOutlineIcon
                     color="black"
                     size="large"

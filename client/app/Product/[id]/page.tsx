@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 
 
 
-const SingleProduct: React.FC = () => {
+const SingleProduct: React.FC<CategoryProps> = ({params}) => {
   const [quant, setQuant] = useState<number>(0);
   const [currentImage, setCurrentImage] = useState<string>("");
   const [orderedQuant, setOrderedQuant] = useState(0);
@@ -14,12 +14,11 @@ const SingleProduct: React.FC = () => {
   console.log(addToWishList,'addToWishList');
 
   const [product, setProduct] = useState<Product | null>(null);
-  const [id, setId] = useState<number>(1);
 
   useEffect(() => {
-    const fetchProductDetails = async (productId: number) => {
+    const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/products/1`);
+        const response = await fetch(`http://localhost:8000/products/${params.id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -31,8 +30,8 @@ const SingleProduct: React.FC = () => {
       }
     };
 
-    fetchProductDetails(id);
-  }, [id]);
+    fetchProductDetails();
+  }, [params.id]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -42,7 +41,7 @@ const SingleProduct: React.FC = () => {
     ? `$${product.price.toFixed(2)}`
     : "Invalid Price";
 
-  const THUMBS: string[] = [product.img2, product.img3, product.img4];
+  const THUMBS: string[] = [product.image,product.img2.slice(1,product.img2.length-1), product.img3.slice(1,product.img3.length-1), product.img4.slice(1,product.img4.length-1),];
 
   const handleClick = (index: number) => {
     setCurrentImage(THUMBS[index]);
@@ -168,7 +167,7 @@ const SingleProduct: React.FC = () => {
                 className="add-to-cart"
                 onClick={() => {
               
-                  setAddToWishList(id)
+                  setAddToWishList(params.id)
                 }}
               >
                 <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
