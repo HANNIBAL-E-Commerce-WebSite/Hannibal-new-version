@@ -34,7 +34,17 @@ const addToWishList = async (req, res) => {
   }
 };
 
+ const deleteFromWishList=async(req,res)=>{
+  try {
+    const result=await WishList.destroy({where:{UserId:req.body.UserId,ProductId:req.body.ProductId}})
+    res.send(result)
+  } catch (error) {
+    res.send(error)
+  }
+ }
+
 module.exports = {
   addToWishList,
-  getAllWishlistProducts
+  getAllWishlistProducts,
+  deleteFromWishList
 };

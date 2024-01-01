@@ -67,3 +67,11 @@ interface SearchResult {
   interface SearchResultsProps {
     results: SearchResult[];
   }
+
+
+interface Orders {
+  UserId:Number,
+  ProductId:Number
+  Product:Products
+  User:User
+}
