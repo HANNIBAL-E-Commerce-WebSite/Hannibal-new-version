@@ -1,17 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
-// import "./Payment.css";
 
-const Payment = () => {
-  const [form, setForm] = useState({});
-  const handleChange = (e) => {
+interface FormState {
+  [key: string]: string;
+}
+
+const Payment: React.FC = () => {
+  const [form, setForm] = useState<FormState>({});
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
-  const onsubmit = (e) => {
+
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("clicked");
     axios
@@ -21,24 +26,24 @@ const Payment = () => {
         const { result } = res.data;
         window.location.href = result.link;
       })
-
       .catch((err) => console.log(err));
   };
+
   console.log(form);
 
   return (
     <div>
       <div className="p-4">
         <h2>Amount</h2>
-        <form className="m-4">
+        <form className="">
           <input
             type="text"
             name="amount"
             className="form-control"
             onChange={handleChange}
           />
-          <button className="btn btn-primary mt-4" onClick={onsubmit}>
-            Submit and continue
+          <button className="buttons" onClick={onSubmit}>
+            pay
           </button>
         </form>
       </div>

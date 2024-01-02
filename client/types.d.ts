@@ -75,3 +75,6 @@ interface Orders {
   Product:Products
   User:User
 }
+interface SuccessProps {
+  result: string | null;
+}
