@@ -87,7 +87,7 @@ const Cart = () => {
   
   return (
     <Fragment>
-      <Badge   color="error">
+      <Badge color="error">
         <ShoppingCartIcon
           color="black"
           onClick={handleOpen}
@@ -122,7 +122,7 @@ const Cart = () => {
                         name="quantity"
                         className="quantity__input"
                       >
-                        0
+                        1
                       </div>
                       <IconButton onClick={handelQuantityDecrement}>
                         <RemoveCircleIcon fontSize="medium" />

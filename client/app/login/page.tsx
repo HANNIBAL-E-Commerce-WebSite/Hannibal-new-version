@@ -5,9 +5,6 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { ReactNode } from 'react';
-
-
 const Login= () => {
   const[con,setCon]=useState("")
   const router=useRouter()
@@ -16,38 +13,67 @@ const Login= () => {
   const[userID,setUserID]=useState(0)
   const[token,setToken]=useState('')
   const[logged,setLogged]=useState(false)
-  const [show, setShow] = useState(false)
- 
-  interface id{ 
-    userID:number;}
-  
-  const login=()=>{
-    axios.post(`http://localhost:8000/auth/login`,{email:email,password:pass})
-    .then(r=>{
-      console.log(r);
-      setToken(r.data.token)
-      setUserID(r.data.userId)
-      router.push('/home')
-      
-    }).catch(err=>console.log(err))
+  const [role,setRole]=useState("")
+  const login = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/auth/login', {
+        email: email,
+        password: pass,
+      })
+      const { token, id ,role} = response.data
+      setToken(token)
+      setUserID(id)
+      setRole(role)
+      alert('Login successful. Welcome!')
+      router.push('/home');
+    } catch (error) {
+      console.error('Login failed:', error)
+      alert('Login failed. Please check your Password or email and try again.')
+    }
   }
- console.log(userID);
- 
+
+  
+  const handleRedirect = () => {
+    switch (role) {
+      case 'admin':
+        router.push('/admin-dashboard')
+        break
+      case 'seller':
+        router.push('/seller-dashboard')
+        break
+      case 'client':
+        router.push('/client-dashboard')
+        break
+      default:
+        router.push('/')
+    }
+  }
+
+  
   return (
     <div className='grid grid-cols-2'>
+     
           <div id='div-az' className='bg-gray w-full h-full' >
             <div className='flex m-20 ml-40 '>
               <div className='flex gap-20'>
-              <Link href={'/login'}><h1 style={{
-    'color': 'white',
-    'width': '240%',
-    'marginTop': '-11%',
-    'height': '150%',
-    'borderRadius': '25px',
-    'display': 'flex',
-    'alignItems': 'center',
-    'justifyContent':' center',
-    'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'}}>  <Link href={'/register'}><button>Register</button></Link></h1></Link>
+              <Link href={'/register'}>
+  <h1
+    style={{
+      'color': 'white',
+      'width': '240%',
+      'marginTop': '-11%',
+      'height': '150%',
+      'borderRadius': '25px',
+      'display': 'flex',
+      'alignItems': 'center',
+      'justifyContent': 'center',
+      'backgroundImage': 'linear-gradient(-45deg,#ce7615, #fcc32c)'
+    }}
+  >
+    <button>Register</button>
+  </h1>
+</Link>
+
               </div>
             </div>
             <div className='ml-40 mt-10'>
@@ -73,13 +99,7 @@ const Login= () => {
        className='flex justify-center items-center w-[30rem] h-14 bg-blue mt-10 text-white'
        >Sign-in </button>
        <h1 className='text-blue text-center mt-10 mr-10 mb-10'>Forget Password?</h1>
-       </div>
-      </div>
-        </div>
-        <div>
-        <img className='w-[900px] h-[900px] float-right' src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg' alt="" />
-        </div>
-        <div className='flex justify-center items-center mt-10'>
+       <div className='flex justify-center items-center mt-10'>
           <p className='text-sm text-gray-500 mt-2'>Follow us on social media:</p>
           <div className='flex gap-4 ml-4'>
             <FontAwesomeIcon icon={faFacebook} size='2x' />
@@ -87,6 +107,23 @@ const Login= () => {
             <FontAwesomeIcon icon={faInstagram} size='2x' />
           </div>
         </div>
+       </div>
+      </div>
+        </div>
+        <div>
+        
+        <img
+  className='w-[600px] h-[600px] float-left mb-4 shadow-2xl mt-24 ml-4'
+  src='https://img.freepik.com/premium-photo/online-shopping-images-big-sales-offer-sale-idea-image-illustration-black-friday-images-banners_744422-6374.jpg'
+  alt=""
+/>
+
+
+
+
+
+        </div>
+      
         </div>
   )
 }
