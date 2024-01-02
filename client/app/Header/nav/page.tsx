@@ -90,7 +90,8 @@ const Nov: React.FC = () => {
               </div>
               <div className="control">
                 <Link href="/wishlist">
-                  <Badge badgeContent={5} color="error">
+                  <Badge color="error">
+                  {/* badgeContent={} */}
                     <FavoriteBorderIcon sx={{ width: "35px" }} />
                   </Badge>
                 </Link>
