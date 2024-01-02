@@ -131,10 +131,10 @@ const deleteProduct = async (req, res) => {
   }
 };
 const getProductByseller = async (req, res) => {
-  const productId = req.params.sellerProduct;
+  const SellerId = req.params.id;
 
   try {
-    const product = await Product.findByPk(productId);
+    const product = await Product.findAll({where:{sellerProduct:SellerId}});
 
     if (!product) {
       return res.status(404).json({ message: "Product not found" });

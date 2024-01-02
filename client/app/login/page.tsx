@@ -46,6 +46,7 @@ const Login= () => {
         break
       default:
         router.push('/home')
+
     }
   }
 
@@ -59,6 +60,7 @@ const Login= () => {
               <Link href={'/home'}>Home</Link>
               <Link href={'/About'}>About</Link>
               <Link href={'/faq'}>FAQ</Link>
+
               <Link href={'/register'}>
   <h1
     style={{
