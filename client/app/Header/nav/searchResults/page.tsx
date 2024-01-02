@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import "./popup.css";
 import { useRef } from "react";
+import Link from "next/link";
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
   console.log(results, "results");
@@ -16,9 +17,11 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
       <div className="popup-content">
         {results.map((result, i) => (
           <div key={i} className="result-item">
-            <p>
-              <img src={result.image} alt="" /> {result.name} {result.price}$
-            </p>
+            <Link href={`/Product/${result.id}`}>
+              <p>
+                <img src={result.image} alt="" /> {result.name} {result.price}$
+              </p>
+            </Link>
           </div>
         ))}
       </div>
