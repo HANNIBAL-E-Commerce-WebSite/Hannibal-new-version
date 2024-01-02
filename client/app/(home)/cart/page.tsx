@@ -88,6 +88,7 @@ const Cart = () => {
   return (
     <Fragment>
       <Badge color="error">
+      <Badge color="error">
         <ShoppingCartIcon
           color="black"
           onClick={handleOpen}
@@ -106,8 +107,8 @@ const Cart = () => {
               ) : (
                 <div className="shop__cart__items">
                   {JSON.parse(localStorage.getItem("basket") as string).map(
-                    (el, i) => (
-                      <div key={i} className="cart__item__card">
+                    (el) => (
+                      <div className="cart__item__card">
                         <div className="cart__item__detail">
                           <div className="cart__item__image">
                             <img
