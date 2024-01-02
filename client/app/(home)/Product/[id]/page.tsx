@@ -76,22 +76,21 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
     setOrderedQuant(0);
   };
 
-  const handelAddToCart = (obj:any) => {
+  const handelAddToCart = (obj: any) => {
     console.log(obj);
-    
-      let storage:Products[]=JSON.parse(localStorage.getItem("basket") as string)|| null
-      let arrBasket=[]
-      console.log(storage);
-      
-      if(storage!==null){
-          arrBasket=[...storage,obj]
-        }
-      else{
-        arrBasket=[obj]
-      }
-          localStorage.clear()
-          localStorage.setItem("basket",JSON.stringify(arrBasket))
-    
+
+    let storage: Products[] =
+      JSON.parse(localStorage.getItem("basket") as string) || null;
+    let arrBasket = [];
+    console.log(storage);
+
+    if (storage !== null) {
+      arrBasket = [...storage, obj];
+    } else {
+      arrBasket = [obj];
+    }
+    localStorage.clear();
+    localStorage.setItem("basket", JSON.stringify(arrBasket));
   };
 
   return (
@@ -168,10 +167,10 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
                 </button>
               </div>
               <button
-                className="add-to-cart"
+                className="add-to-cart add-to-cart-width"
                 onClick={() => {
                   setOrderedQuant(quant);
-                    handelAddToCart(product)
+                  handelAddToCart(product);
                 }}
               >
                 <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -183,12 +182,8 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
                 </svg>
                 add to cart
               </button>
-              <button
-                className="add-to-cart"
-               
-              >
+              <button className="des .butt .add-to-wishlist">
                 <FavoriteBorderIcon sx={{ width: "25px" }} />
-                add to wshlist
               </button>
             </div>
           </section>

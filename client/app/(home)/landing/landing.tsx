@@ -13,34 +13,32 @@ const Landing: React.FC = () => {
             Checkout The Best Fashion Style
           </h1>
           <Link href="/category">
-            
-              <Button
-                variant="outlined"
-                sx={{
-                  width: "190px",
-                  height: "50px",
-                  borderRadius: "20px",
-                  fontWeight: "700",
-                  backgroundColor: "none",
+            <Button
+              variant="outlined"
+              sx={{
+                width: "190px",
+                height: "50px",
+                borderRadius: "20px",
+                fontWeight: "700",
+                backgroundColor: "none",
+                borderColor: "black",
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "black",
+                  color: "#FFE26E",
                   borderColor: "black",
-                  color: "black",
-                  "&:hover": {
-                    backgroundColor: "black",
-                    color: "#FFE26E",
-                    borderColor: "black",
-                  },
-                }}
-              >
-                SHOP NOW
-              </Button>
-           
+                },
+              }}
+            >
+              SHOP NOW
+            </Button>
           </Link>
         </div>
       </div>
       <div className="landing__image__container">
         <img
           className="landing__image"
-          src="https://res.cloudinary.com/dubduh12x/image/upload/v1704060943/5c4af3f6449bef4207c9daff8e194b23-removebg_h6be3b.png"
+          src="https://res.cloudinary.com/dubduh12x/image/upload/v1704185752/dda4a6e4e0adea37b20750ee5d7e4d3d-removebg-preview_rmeyjt.png"
           alt=""
         />
       </div>
