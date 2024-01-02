@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 const FeaturedItems: React.FC = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState<Product[]>([]);
   const [displayedProducts, setDisplayedProducts] = useState(4); // number item of card to display initially
   const [showAllClicked, setShowAllClicked] = useState(false);
   const [loading, setLoading] = useState(true);

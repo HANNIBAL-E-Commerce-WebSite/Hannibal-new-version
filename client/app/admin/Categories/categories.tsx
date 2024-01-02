@@ -9,6 +9,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ImageUploader from "@/app/cloudinary/cloudinary";
+import axios from "axios";
 
 
 const Categories=()=>{
@@ -36,6 +38,26 @@ const Categories=()=>{
     useEffect(()=>{
         fetchData()
     },[refresh])
+
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+  
+      if (file) {
+        try {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", "qncgi1tt");
+  
+          const response = await axios.post(
+            `https://api.cloudinary.com/v1_1/dubduh12x/image/upload`,
+            formData
+          );
+          setAddImg(response.data.secure_url);
+        } catch (error) {
+          console.error("Error uploading image:", error);
+        }
+      }}
+
 
     const deleteCategory=(ids:Number|undefined)=>{
       confirmAlert({
@@ -133,10 +155,14 @@ const Categories=()=>{
                 Photo
               </label>
               <div className="mt-2 flex items-center gap-x-3">
-                <UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true" onClick={(e)=>{setAddImg("https://t4.ftcdn.net/jpg/03/85/95/63/360_F_385956366_Zih7xDcSLqDxiJRYUfG5ZHNoFCSLMRjm.jpg")}} />
+                <label>
+                <UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true"  />
+                <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+                </label>
                 <button
                   type="button"
                   className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  onClick={(e)=>{<ImageUploader/>}}
                 >
                   Change
                 </button>

@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import Featured from './Featured/Featured'
 import Landing from './landing/landing'
+import FeaturedItems from '../Featured/FeaturedItems/page'
 const  Home=()=> {
 
 
@@ -10,6 +11,7 @@ const  Home=()=> {
     <main>
       <Landing/>
       <Featured/>
+      <FeaturedItems/>
     </main>
  
   )
