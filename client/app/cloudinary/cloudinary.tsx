@@ -27,9 +27,11 @@ const ImageUploader: React.FC = () => {
 
   return (
     <div>
-      <h2>Image Uploader</h2>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      {image && <img src={image} alt="Uploaded Image" />}
+      <label>
+        
+    <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+</label>
+   
     </div>
   );
 };

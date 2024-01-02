@@ -24,7 +24,7 @@ interface FooterProps {
     };
 }
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="footer-section">
     <div className="container">
