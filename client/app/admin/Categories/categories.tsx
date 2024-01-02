@@ -37,7 +37,7 @@ const Categories=()=>{
         fetchData()
     },[refresh])
 
-    const deleteCategory=(ids:Number)=>{
+    const deleteCategory=(ids:Number|undefined)=>{
       confirmAlert({
         title: 'Confirm Deletion',
         message: 'Are you sure you want to delete this item?',

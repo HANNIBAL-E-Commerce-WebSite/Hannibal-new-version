@@ -32,6 +32,29 @@ const ShopCategory = () => {
 
     fetchCategories();
   }, []);
+  const handelAddToCart = (obj:any) => {
+    console.log(obj);
+    
+      let storage:Products[]=JSON.parse(localStorage.getItem("basket") as string)|| null
+      let arrBasket=[]
+      if(storage!==null){
+          arrBasket=[...storage,obj]
+        }
+      else{
+        arrBasket=[obj]
+      }
+          localStorage.clear()
+          localStorage.setItem("basket",JSON.stringify(arrBasket))
+    
+  };
+   
+  const handleAddToWishList=async(ids:Number)=>{
+    const ress=axios.post('http://localhost:8000/wishlist',{
+      prodId:ids,
+      id:4
+  })
+  }
+
   return (
     <div className="shop__contianer">
       {categories ? (
@@ -85,7 +108,7 @@ const ShopCategory = () => {
                           </div>
                           <div className="product__card__action">
                             <IconButton
-                              // onClick={handleAddToWishList}
+                              onClick={()=>{handleAddToWishList(product.id)}}
                               sx={{
                                 borderRadius: "20px",
                                 width: "40px",
@@ -97,7 +120,7 @@ const ShopCategory = () => {
                               />
                             </IconButton>
                             <IconButton
-                              // onClick={handleAddToCart}
+                              onClick={()=>{handelAddToCart(product)}}
                               sx={{
                                 borderRadius: "20px",
                                 width: "40px",

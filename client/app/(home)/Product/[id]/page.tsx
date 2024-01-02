@@ -75,6 +75,25 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
     setQuant(0);
     setOrderedQuant(0);
   };
+
+  const handelAddToCart = (obj:any) => {
+    console.log(obj);
+    
+      let storage:Products[]=JSON.parse(localStorage.getItem("basket") as string)|| null
+      let arrBasket=[]
+      console.log(storage);
+      
+      if(storage!==null){
+          arrBasket=[...storage,obj]
+        }
+      else{
+        arrBasket=[obj]
+      }
+          localStorage.clear()
+          localStorage.setItem("basket",JSON.stringify(arrBasket))
+    
+  };
+
   return (
     <main className="App">
       <Container component="section" maxWidth={"lg"}>
@@ -152,6 +171,7 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
                 className="add-to-cart"
                 onClick={() => {
                   setOrderedQuant(quant);
+                    handelAddToCart(product)
                 }}
               >
                 <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -165,9 +185,7 @@ const SingleProduct: React.FC<CategoryProps> = ({ params }) => {
               </button>
               <button
                 className="add-to-cart"
-                onClick={() => {
-                  setAddToWishList(params.id);
-                }}
+               
               >
                 <FavoriteBorderIcon sx={{ width: "25px" }} />
                 add to wshlist
