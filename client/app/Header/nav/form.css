@@ -9,19 +9,21 @@
 
 }
 
-.search__form__input {
+.searchforminput {
     width: 100%;
     height: 45px;
     border-radius: 30px;
     outline: none;
     padding-left: 25px;
     font-size: .9rem;
+    border: 1px;
     border-color: #0d0b03;
     border-style: solid;
     border-radius: 10px;
 }
 
 .search__form__button {
+    border: 1px;
     position: absolute;
     height: 45px;
     width: 50px;

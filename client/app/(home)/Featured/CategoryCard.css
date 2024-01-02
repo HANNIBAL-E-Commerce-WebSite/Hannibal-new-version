@@ -8,7 +8,8 @@
     box-shadow: 0px 2px 5px -2px;
     position: relative;
 }
-.cat-name{
+
+.cat-name {
     color: blue;
 }
 
@@ -87,9 +88,15 @@
     height: 40px;
     border-radius: 5px;
     font-size: 0.8rem;
-    background-color: transparent;
+    /* background-color: transparent; */
+    /* background-color: #FFE26E; */
+
     border-color: #FFE26E;
     border-style: solid;
     font-weight: bold;
-    color: #FFE26E;
+    color: #000000;
+}
+
+.category__card__action__button:hover {
+    background-color: #FFE26E !important;
 }

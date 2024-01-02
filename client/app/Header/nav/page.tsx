@@ -64,7 +64,7 @@ const Nov: React.FC = () => {
             <input
               type="text"
               placeholder="Search for products"
-              className="search__form__input"
+              className="searchforminput"
               value={input}
               onChange={(e) => handleChange(e.target.value)}
             />
