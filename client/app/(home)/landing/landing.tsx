@@ -38,7 +38,7 @@ const Landing: React.FC = () => {
       <div className="landing__image__container">
         <img
           className="landing__image"
-          src="https://res.cloudinary.com/dubduh12x/image/upload/v1704185752/dda4a6e4e0adea37b20750ee5d7e4d3d-removebg-preview_rmeyjt.png"
+          src="https://res.cloudinary.com/dubduh12x/image/upload/v1704196680/8630185990e9f814863483cd6ad25841-removebg-preview_j3ctoz.png"
           alt=""
         />
       </div>

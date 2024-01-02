@@ -17,11 +17,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
         {results.map((result, i) => (
           <div key={i} className="result-item">
             <p>
-              <img
-                src={result.image.slice(1, result.image.length - 1)}
-                alt=""
-              />{" "}
-              {result.name} {result.price}Dt
+              <img src={result.image} alt="" /> {result.name} {result.price}Dt
             </p>
           </div>
         ))}

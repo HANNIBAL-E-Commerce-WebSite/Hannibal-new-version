@@ -83,11 +83,11 @@ const Cart = () => {
       })
       .catch((err) => console.log(err));
   };
-  console.log(JSON.parse(localStorage.getItem('basket') as string));
-  
+  console.log(JSON.parse(localStorage.getItem("basket") as string));
+
   return (
     <Fragment>
-      <Badge   color="error">
+      <Badge color="error">
         <ShoppingCartIcon
           color="black"
           onClick={handleOpen}
@@ -105,37 +105,44 @@ const Cart = () => {
                 <div className="cart__empty"> Empty cart!</div>
               ) : (
                 <div className="shop__cart__items">
-                  {JSON.parse(localStorage.getItem('basket') as string).map((el)=>(
-                  <div className="cart__item__card">
-                    <div className="cart__item__detail">
-                      <div className="cart__item__image">
-                        <img src={el.image} alt="item" className="item__image" />
-                      </div>
-                      <div className="cart__item__name">{el.name}</div>
-                    </div>
-                    <div className="cart__item__quantity">
-                      <IconButton onClick={handelQuantityIncrement}>
-                        <AddCircleIcon />
-                      </IconButton>
-                      <div
-                        type="text"
-                        name="quantity"
-                        className="quantity__input"
-                      >
-                        0
-                      </div>
-                      <IconButton onClick={handelQuantityDecrement}>
-                        <RemoveCircleIcon fontSize="medium" />
-                      </IconButton>
-                    </div>
+                  {JSON.parse(localStorage.getItem("basket") as string).map(
+                    (el, i) => (
+                      <div key={i} className="cart__item__card">
+                        <div className="cart__item__detail">
+                          <div className="cart__item__image">
+                            <img
+                              src={el.image}
+                              alt="item"
+                              className="item__image"
+                            />
+                          </div>
+                          <div className="cart__item__name">{el.name}</div>
+                        </div>
+                        <div className="cart__item__quantity">
+                          <IconButton onClick={handelQuantityIncrement}>
+                            <AddCircleIcon />
+                          </IconButton>
+                          <div
+                            type="text"
+                            name="quantity"
+                            className="quantity__input"
+                          >
+                            0
+                          </div>
+                          <IconButton onClick={handelQuantityDecrement}>
+                            <RemoveCircleIcon fontSize="medium" />
+                          </IconButton>
+                        </div>
 
-                    <div className="cart__item__price">{el.price}</div>
-                    <div className="remove__item__icon">
-                      <IconButton>
-                        <HighlightOffIcon onClick={handelRemoveItem} />
-                      </IconButton>
-                    </div>
-                  </div>))}
+                        <div className="cart__item__price">{el.price}</div>
+                        <div className="remove__item__icon">
+                          <IconButton>
+                            <HighlightOffIcon onClick={handelRemoveItem} />
+                          </IconButton>
+                        </div>
+                      </div>
+                    )
+                  )}
                 </div>
               )}
               {3 > 0 && (
