@@ -13,6 +13,10 @@
 
 }
 
+body>footer>div.container>div>div:nth-child(2)>ul {
+  color: #fff;
+}
+
 .row {
   display: flex;
   align-items: center;
