@@ -56,7 +56,12 @@ const Nov: React.FC = () => {
       <div className="top__container">
         <div className="navbrand__container">
           <h1 className="navbrand">
-            <Link href="/">HANNIBAL</Link>
+            <Link href="/">
+              <img
+                src="https://res.cloudinary.com/dubduh12x/image/upload/v1704182192/hannibal12_lp8bcy.jpg"
+                alt=""
+              />
+            </Link>
           </h1>
         </div>
         <div className="form__container">

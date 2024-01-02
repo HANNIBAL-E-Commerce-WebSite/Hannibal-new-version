@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const Success: NextPage = () => {
+
+
+const Success: NextPage<SuccessProps> = ({ result }) => {
   const router = useRouter();
-  const [result, setResult] = (useState < string) | (null > null);
 
   useEffect(() => {
     const fetchPaymentStatus = async () => {
@@ -26,15 +28,33 @@ const Success: NextPage = () => {
   }, [router.query.payment_id]);
 
   return (
-    <React.Fragment>
+    <>
       <div className="p-4">
         <div className="alert alert-success">
           Payment Successfully Completed
         </div>
         {result && <p>Status: {result}</p>}
       </div>
-    </React.Fragment>
+    </>
   );
+};
+
+Success.getInitialProps = async (ctx) => {
+  const { query } = ctx;
+  let result = null;
+
+  if (query.payment_id) {
+    try {
+      const response = await axios.post(
+        `http://localhost/payment/pay/${query.payment_id}`
+      );
+      result = response.data.result.status;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return { result };
 };
 
 export default Success;
