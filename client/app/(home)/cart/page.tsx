@@ -12,7 +12,7 @@ import { IconButton } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import "./Cart.css"
+import "./Cart.css";
 
 const style = {
   position: "absolute",
@@ -71,13 +71,25 @@ const Cart = () => {
       return;
     }
   };
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("clicked");
+    axios
+      .post("http://localhost:8000/payment/pay", 1200)
+      .then((res) => {
+        console.log("eee");
+        const { result } = res.data;
+        window.location.href = result.link;
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <Fragment>
       <Badge badgeContent="5" color="error">
         <ShoppingCartIcon
           color="black"
           onClick={handleOpen}
-          sx={{ width: '35px' }}
+          sx={{ width: "35px" }}
         />
       </Badge>
       <Modal open={open} onClose={handleClose}>
@@ -91,36 +103,36 @@ const Cart = () => {
                 <div className="cart__empty"> Empty cart!</div>
               ) : (
                 <div className="shop__cart__items">
-                 <div className="cart__item__card">
-      <div className="cart__item__detail">
-        <div className="cart__item__image">
-          <img
-            src=""
-            alt="item"
-            className="item__image"
-          />
-        </div>
-        <div className="cart__item__name">test</div>
-      </div>
-      <div className="cart__item__quantity">
-        <IconButton onClick={handelQuantityIncrement}>
-          <AddCircleIcon />
-        </IconButton>
-        <div type="text" name="quantity" className="quantity__input">
-          "10"
-        </div>
-        <IconButton onClick={handelQuantityDecrement}>
-          <RemoveCircleIcon fontSize="medium" />
-        </IconButton>
-      </div>
-  
-      <div className="cart__item__price">$55</div>
-      <div className="remove__item__icon">
-        <IconButton>
-          <HighlightOffIcon onClick={handelRemoveItem} />
-        </IconButton>
-      </div>
-    </div>
+                  <div className="cart__item__card">
+                    <div className="cart__item__detail">
+                      <div className="cart__item__image">
+                        <img src="" alt="item" className="item__image" />
+                      </div>
+                      <div className="cart__item__name">test</div>
+                    </div>
+                    <div className="cart__item__quantity">
+                      <IconButton onClick={handelQuantityIncrement}>
+                        <AddCircleIcon />
+                      </IconButton>
+                      <div
+                        type="text"
+                        name="quantity"
+                        className="quantity__input"
+                      >
+                        "10"
+                      </div>
+                      <IconButton onClick={handelQuantityDecrement}>
+                        <RemoveCircleIcon fontSize="medium" />
+                      </IconButton>
+                    </div>
+
+                    <div className="cart__item__price">$55</div>
+                    <div className="remove__item__icon">
+                      <IconButton>
+                        <HighlightOffIcon onClick={handelRemoveItem} />
+                      </IconButton>
+                    </div>
+                  </div>
                 </div>
               )}
               {3 > 0 && (
@@ -132,7 +144,7 @@ const Cart = () => {
                     </div>
                   </div>
                   <div className="checkout">
-                    <Button variant="outlined" onClick={handleCheckout}>
+                    <Button variant="outlined" onClick={onSubmit}>
                       Checkout
                     </Button>
                   </div>
@@ -150,6 +162,7 @@ const Cart = () => {
         </Box>
       </Modal> */}
     </Fragment>
-  );}
+  );
+};
 
 export default Cart;
