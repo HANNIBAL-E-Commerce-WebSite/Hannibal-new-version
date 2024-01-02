@@ -7,11 +7,11 @@ const UserContext =createContext<any>(undefined)
 export function UserWrapper({children}: {
     children: React.ReactNode
   }){
-    const [user,setUser]=useState<User|{}>({})
+    const [userc,setUser]=useState<User|{}>({})
 
     return (
         <UserContext.Provider value={{
-            user,
+            userc,
             setUser
         }
         }>

@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { useUserContext } from '@/context/userContext' 
 const Login= () => {
   const[con,setCon]=useState("")
   const router=useRouter()
@@ -14,6 +15,8 @@ const Login= () => {
   const[token,setToken]=useState('')
   const[logged,setLogged]=useState(false)
   const [role,setRole]=useState("")
+  const {setUser} =useUserContext()
+
   const login = async () => {
     try {
       const response = await axios.post('http://localhost:8000/auth/login', {
@@ -24,8 +27,9 @@ const Login= () => {
       setToken(token)
       setUserID(id)
       setRole(role)
+      setUser(response.data)
       alert('Login successful. Welcome!')
-      router.push('/home');
+      router.push('/');
     } catch (error) {
       console.error('Login failed:', error)
       alert('Login failed. Please check your Password or email and try again.')

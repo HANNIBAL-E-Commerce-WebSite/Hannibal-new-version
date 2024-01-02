@@ -10,6 +10,7 @@ import "./nav.css";
 import "./form.css";
 import DrawerNav from "./drawerNav/page";
 import SearchResults from "./searchResults/page";
+import { useUserContext } from '@/context/userContext' 
 
 interface Product {
   name: string;
@@ -21,6 +22,9 @@ interface WishItems {
 const Nov: React.FC = () => {
   const [results, setResults] = useState<Product[]>([]);
   const [input, setInput] = useState<string>("");
+  const {userc}=useUserContext()
+  console.log("user",userc);
+  
 
   useEffect(() => {
     fetchData(input);
@@ -83,8 +87,7 @@ const Nov: React.FC = () => {
           <div className="control__bar__container">
             <div className="controls__container">
               <div className="control">
-                {/* <Link href={userId ? "/profile" : "/account/login"}> */}
-                <Link href="/profile">
+                <Link href={(userc.userId!==undefined)? "/profile" : "/login"}>
                   <PersonOutlineIcon sx={{ width: "35px" }} />
                 </Link>
               </div>

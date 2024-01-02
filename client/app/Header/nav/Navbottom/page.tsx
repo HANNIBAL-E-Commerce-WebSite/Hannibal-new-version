@@ -13,13 +13,13 @@ const NavLinks = () => {
             <Link href="/category">Shop</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/1">Men</Link>
+            <Link href="/category/3">Men</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/2">Women</Link>
+            <Link href="/category/1">Women</Link>
           </li>
           <li className="nav-link">
-            <Link href="/category/3">Kids</Link>
+            <Link href="/category/2">Kids</Link>
           </li>
           <li className="nav-link">
             <Link href="/category/4">Babies</Link>

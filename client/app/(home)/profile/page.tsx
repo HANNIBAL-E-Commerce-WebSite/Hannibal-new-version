@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
+import { useUserContext } from '@/context/userContext' 
 import "./profile.css";
+import Link from "next/link";
 interface Result {
   fullName: string;
   email: string;
@@ -21,10 +23,14 @@ const Profile: React.FC<LoginProps> = ({ userID }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const route = useRouter();
+  const {userc}=useUserContext()
+  console.log(userc);
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get<Result>(`http://localhost:8000/users/2`);
+        const res = await axios.get<Result>(`http://localhost:8000/users/${userc.userId}`);
         const responseData: Result = res.data;
         setUser(responseData);
         setIsLoading(false);
@@ -103,8 +109,15 @@ const Profile: React.FC<LoginProps> = ({ userID }) => {
             User Email: {isLoading ? "Loading..." : user?.email}
           </div>
           <div className="text-center text-gray-600 mt-1">
+          {(user?.role=="Seller")&&<Link href="/seller">
             User Role: {isLoading ? "Loading..." : user?.role}
+            </Link>}
+            {(user?.role=="Admin")&&<Link href="/admin/Clients">
+            User Role: {isLoading ? "Loading..." : user?.role}
+            </Link>}
+
           </div>
+          
         </div>
         <div className="css-fix1 max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5">
           {user?.role === "User" && (

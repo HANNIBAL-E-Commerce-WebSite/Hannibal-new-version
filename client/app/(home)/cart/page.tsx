@@ -88,7 +88,6 @@ const Cart = () => {
   return (
     <Fragment>
       <Badge color="error">
-      <Badge color="error">
         <ShoppingCartIcon
           color="black"
           onClick={handleOpen}
@@ -106,7 +105,7 @@ const Cart = () => {
                 <div className="cart__empty"> Empty cart!</div>
               ) : (
                 <div className="shop__cart__items">
-                  {JSON.parse(localStorage.getItem("basket") as string).map(
+                  {JSON.parse(localStorage.getItem("basket") as string)?.map(
                     (el) => (
                       <div className="cart__item__card">
                         <div className="cart__item__detail">
@@ -148,12 +147,7 @@ const Cart = () => {
               )}
               {3 > 0 && (
                 <div className="options">
-                  <div className="total__amount">
-                    <div className="total__amount__label">Total Amount:</div>
-                    <div className="total__amount__value">
-                      ${cartItems.totalAmount}.00
-                    </div>
-                  </div>
+                  
                   <div className="checkout">
                     <Button variant="outlined" onClick={onSubmit}>
                       Checkout

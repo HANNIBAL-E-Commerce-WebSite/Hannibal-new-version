@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
+import { useUserContext } from '@/context/userContext' 
 
 interface EditProps {
   children?: ReactNode;
@@ -20,6 +21,7 @@ const Edit: React.FC<EditProps> = ({ userID }) => {
   const [refresh, setRefresh] = useState<boolean>(true);
   const [bool, setbool] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const {userc}=useUserContext()
 
   const checkPassword = async () => {
     const ob = { email: email, password: pass };
@@ -43,7 +45,7 @@ const Edit: React.FC<EditProps> = ({ userID }) => {
     };
 
     axios
-      .put(`http://localhost:8000/users/2`, obj)
+      .put(`http://localhost:8000/users/${userc.userId}`, obj)
       .then((result) => {
         console.log("User updated:", result);
         setRefresh(!refresh);
@@ -104,7 +106,7 @@ const Edit: React.FC<EditProps> = ({ userID }) => {
               }}
             />
             <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-black-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-black-500 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-black-500 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-black-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-black-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-black-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-black-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-              E-mail:
+              E-mail
             </label>
             <br />
           </div>
