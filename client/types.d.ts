@@ -78,3 +78,24 @@ interface Orders {
 interface SuccessProps {
   result: string | null;
 }
+interface FooterProps {
+  copyrightText?: string;
+  socialLinks: {
+    twitterUrl: string;
+    instagramUrl: string;
+    githubUrl: string;
+    facebookUrl: string;
+    youtubeUrl: string;
+    twitterIcon: string;
+    instagramIcon: string;
+    githubIcon: string;
+    facebookIcon: string;
+    className: string;
+  };
+  contactInfo: {
+    email: string;
+    phoneNumber: string;
+    address: string;
+    LocalPhoneIcon: string;
+  };
+}
